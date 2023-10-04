@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>
+    Welcome to TODO Application
+</h1>
+<form>
+    <label for="taskName">Task Name:</label>
+    <input type="text" id="taskName" required>
+    <label for="taskStatus">Task Status:</label>
+    <select id="taskStatus" required>
+        <option value="Complete">Complete</option>
+        <option value="Incomplete">Incomplete</option>
+    </select>
+    <input type="submit">
+</form>
+<h2>All Todo Data</h2>
+<div id="tododata"></div>
+</body>
+<script src="./script/index.js"></script>
+</html>
