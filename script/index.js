@@ -56,9 +56,9 @@ function display(data){
     data.forEach(element => {
         let div=document.createElement('div')
         let name=document.createElement('p')
-        name.innerText=element.Task_name
+        name.innerText=`TaskName:${element.Task_name}`
         let status=document.createElement('p')
-        status.innerText=element.Task_status
+        status.innerText=`TaskStatus:${element.Task_status}`
         let edit=document.createElement('button')
         edit.innerText="Edit"
         let del=document.createElement('button')
