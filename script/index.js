@@ -61,6 +61,7 @@ function display(data){
         status.innerText=`TaskStatus:${element.Task_status}`
         let edit=document.createElement('button')
         edit.innerText="Edit"
+        edit.addEventListener('click', () => editTask(element._id, element.Task_name, element.Task_status));
         let del=document.createElement('button')
         del.innerText="DELETE"
         del.addEventListener('click',async()=>{
@@ -83,4 +84,35 @@ function display(data){
         tododata.append(div)
 
     });
+}
+async function editTask(id, taskName, taskStatus) {
+    const newTaskName = prompt('Enter updated Task Name:', taskName);
+    const newTaskStatus = prompt('Enter updated Task Status (Complete/Incomplete):', taskStatus);
+
+    if (newTaskName !== null && newTaskStatus !== null) {
+        const updatedTaskData = {
+            Task_name: newTaskName,
+            Task_status: newTaskStatus
+        };
+
+        try {
+            const response = await fetch(`https://api-todo-3dmm.onrender.com/todo/update/${id}`, {
+                method: 'PUT',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedTaskData)
+            });
+
+            if (response.ok) {
+                alert('Task Updated');
+                window.location.reload();
+            } else {
+                alert('Failed to update the task.');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
